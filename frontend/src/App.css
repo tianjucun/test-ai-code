@@ -1,0 +1,524 @@
+/* 全局样式 */
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 游戏主界面 */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 画布容器 */
+.canvas-container {
+  position: relative;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+  background: white;
+}
+
+.canvas {
+  cursor: crosshair;
+  display: block;
+}
+
+/* 增强的画布容器样式 */
+.drawing-canvas-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.drawing-canvas {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.drawing-canvas.mobile {
+  touch-action: none; /* 防止移动端滚动 */
+}
+
+/* 工具栏样式 */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tool-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.tool-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tool-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 60px;
+  gap: 4px;
+}
+
+.tool-btn:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.tool-btn.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.tool-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tool-text {
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* 颜色选择器样式 */
+.color-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.current-color {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.current-color:hover {
+  transform: scale(1.1);
+}
+
+.color-palette {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  display: none;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  z-index: 1000;
+  min-width: 280px;
+}
+
+.color-palette.show {
+  display: grid;
+}
+
+.color-option {
+  width: 35px;
+  height: 35px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+  border-color: #667eea;
+}
+
+.color-picker-input {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  grid-column: span 2;
+}
+
+/* 画笔大小控制 */
+.brush-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brush-slider {
+  width: 120px;
+  height: 6px;
+  border-radius: 3px;
+  background: #e0e0e0;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.brush-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.brush-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.brush-size {
+  font-weight: 600;
+  color: #333;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* 动作按钮 */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.action-btn:hover:not(:disabled) {
+  border-color: #28a745;
+  background: #f8fff9;
+  transform: translateY(-2px);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* 画布状态显示 */
+.canvas-status {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #666;
+  flex-wrap: wrap;
+}
+
+.canvas-status span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 网格覆盖层 */
+.grid-overlay {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 原有工具栏样式（保留兼容性） */
+.tool {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tool:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.tool.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+/* 原有颜色选择器样式（保留兼容性） */
+.color-picker {
+  width: 50px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 按钮 */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: #4c63d2;
+  color: white;
+  border: 2px solid #4c63d2;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: #3c5aa6;
+  border-color: #3c5aa6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 99, 210, 0.4);
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #e0e0e0;
+}
+
+/* AI猜测结果显示 */
+.ai-result {
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ai-guess {
+  font-size: 24px;
+  font-weight: bold;
+  color: #667eea;
+  margin: 10px 0;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 增强的响应式设计 */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 10px;
+  }
+  
+  .toolbar {
+    padding: 15px;
+    gap: 15px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .tool-section {
+    justify-content: center;
+  }
+  
+  .tool-btn {
+    min-width: 50px;
+    padding: 6px 8px;
+  }
+  
+  .tool-icon {
+    font-size: 14px;
+  }
+  
+  .tool-text {
+    font-size: 9px;
+  }
+  
+  .color-palette {
+    grid-template-columns: repeat(4, 1fr);
+    min-width: 200px;
+    gap: 6px;
+  }
+  
+  .color-option {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .brush-slider {
+    width: 100px;
+  }
+  
+  .action-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .canvas-status {
+    gap: 15px;
+    font-size: 11px;
+  }
+  
+  .ai-guess {
+    font-size: 20px;
+  }
+  
+  .drawing-canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .tool-section {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .color-palette {
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 150px;
+    padding: 10px;
+  }
+  
+  .brush-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .action-buttons {
+    justify-content: center;
+  }
+}
+
+/* 深色主题支持 */
+@media (prefers-color-scheme: dark) {
+  .toolbar {
+    background: rgba(40, 40, 40, 0.95);
+    color: #fff;
+  }
+  
+  .tool-btn {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #fff;
+  }
+  
+  .tool-btn:hover {
+    background: #3a3a3a;
+  }
+  
+  .current-color {
+    border-color: #444;
+  }
+  
+  .color-palette {
+    background: #2a2a2a;
+  }
+  
+  .color-option {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
