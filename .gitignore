@@ -1,0 +1,140 @@
+# 操作系统生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 编辑器和 IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.atom/
+.brackets.json
+.cloud9/
+
+# 编译和构建输出
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.a
+*.so
+*.dylib
+*.class
+*.pyc
+*.pyo
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.pip-cache/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+.mtj.tmp/
+*.nb-private
+*.hprof
+
+# C/C++
+*.o
+*.lo
+*.la
+*.al
+*.libs
+*.so
+*.dylib
+*.exe
+*.out
+*.app
+
+# Build directories
+build/
+dist/
+out/
+target/
+builds/
+tmp/
+temp/
+
+# 日志文件
+*.log
+logs/
+*.log.*
+
+# 缓存和临时文件
+.cache/
+.tmp/
+temp/
+tmp/
+*.tmp
+*.temp
+
+# 环境配置文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 依赖目录
+lib/
+vendor/
+.externalNativeBuild
+.cxx/
+
+# 备份文件
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.tmp
+
+# 测试覆盖率报告
+coverage/
+.nyc_output/
+*.lcov
+
+# 其他常见忽略
+*.pid
+*.seed
+*.pid.lock
+.npm
+.eslintcache
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist
+.serverless
+.fusebox/
+.dynamodb/
